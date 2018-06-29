@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <string name="user_list_add_more_button_text">ADD MORE USERS</string>
-    <string name="user_list_add_more_button_text_loading">ADDING MORE USERS...</string>
-    <string name="user_list_empty">Oops, there is no users! Try again by swiping down or
-        click on the button "ADD MORE USERS"</string>
-    <string name="favourite_user_list_empty">Oops, there is no favourite users! Try adding some
-        users to favourites in the "Users" section.</string>
-</resources>

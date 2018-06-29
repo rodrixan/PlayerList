@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <string name="activity_random_users_list">Random Users</string>
-    <string name="activity_favourite_users_list">Favourite Users</string>
-    <string name="activity_random_users_detail">User Detail</string>
-</resources>
