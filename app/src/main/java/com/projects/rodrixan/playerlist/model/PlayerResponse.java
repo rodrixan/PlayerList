@@ -1,13 +1,12 @@
-
 package com.projects.rodrixan.playerlist.model;
 
 import java.io.Serializable;
 import java.util.List;
+
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class PlayerResponse implements Serializable
-{
+public class PlayerResponse implements Serializable {
 
     @SerializedName("players")
     @Expose
@@ -18,17 +17,14 @@ public class PlayerResponse implements Serializable
     @SerializedName("title")
     @Expose
     private String title;
-    private final static long serialVersionUID = -5970607735133667268L;
 
     /**
      * No args constructor for use in serialization
-     * 
      */
     public PlayerResponse() {
     }
 
     /**
-     * 
      * @param title
      * @param players
      * @param type
