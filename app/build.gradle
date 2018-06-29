@@ -1,3 +1,42 @@
+def AndroidAnnotationsVersion = '4.4.0'
+def AndroidSupportVersion = '27.1.1'
+def GSONVersion = '2.8.5'
+def ConstraintLayoutVersion = '1.1.2'
+
+def RetrofitVersion = '2.4.0'
+def RetrofitGsonVersion = '2.4.0'
+def OkHttpVersion = '3.10.0'
+def CircleImageViewVersion = '2.2.0'
+def PicassoVersion = '2.71828'
+
+def JUnitVersion = '4.12'
+def SupportTestVersion = '1.0.2'
+def EspressoVersion = '3.0.2'
+def SupportTest = '1.0.2'
+def MockitoVersion = '2.7.22'
+
+
+
+
+buildscript {
+    repositories {
+        jcenter()
+
+        mavenCentral()
+
+        google()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:3.1.3'
+
+    }
+}
+
+repositories {
+    mavenCentral()
+    mavenLocal()
+}
+
 apply plugin: 'com.android.application'
 
 android {
@@ -9,7 +48,18 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        vectorDrawables.useSupportLibrary = true
     }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    testOptions {
+        animationsDisabled = true
+    }
+
     buildTypes {
         release {
             minifyEnabled false
@@ -20,8 +70,48 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation 'com.android.support:appcompat-v7:27.1.1'
-    testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'com.android.support.test:runner:1.0.2'
-    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+    annotationProcessor "org.androidannotations:androidannotations:$AndroidAnnotationsVersion"
+
+    implementation("com.android.support:appcompat-v7:$AndroidSupportVersion") {
+        force true
+    }
+    implementation("com.android.support:design:$AndroidSupportVersion") {
+        force true
+    }
+    implementation("com.android.support:support-v4:$AndroidSupportVersion") {
+        force true
+    }
+    implementation "com.android.support.constraint:constraint-layout:$ConstraintLayoutVersion"
+
+    implementation "org.androidannotations:androidannotations-api:$AndroidAnnotationsVersion"
+    implementation "com.squareup.retrofit2:retrofit:2.$RetrofitVersion"
+    implementation "com.google.code.gson:gson:$GSONVersion"
+    implementation "com.squareup.retrofit2:converter-gson:$RetrofitGsonVersion"
+    implementation "com.squareup.okhttp3:logging-interceptor:$OkHttpVersion"
+    implementation "com.squareup.okhttp3:okhttp:$OkHttpVersion"
+
+
+    implementation "de.hdodenhof:circleimageview:$CircleImageViewVersion"
+    implementation "com.squareup.picasso:picasso:$PicassoVersion"
+
+
+
+    testImplementation "junit:junit:$JUnitVersion"
+    androidTestImplementation "com.android.support.test:runner:$SupportTestVersion"
+    androidTestImplementation "com.android.support.test.espresso:espresso-core:$EspressoVersion"
+
+    androidTestImplementation "com.squareup.retrofit2:retrofit-mock:$RetrofitVersion"
+    androidTestImplementation "com.squareup.okhttp3:mockwebserver:$OkHttpVersion"
+    androidTestImplementation "com.android.support.test:runner:$SupportTest"
+    androidTestImplementation "com.android.support.test:rules:$SupportTest"
+    androidTestImplementation("com.android.support:support-annotations:$AndroidSupportVersion") {
+        force = true
+    }
+    androidTestImplementation "com.android.support.test.espresso:espresso-intents:$EspressoVersion"
+    androidTestImplementation("com.android.support.test.espresso:espresso-contrib:$EspressoVersion") {
+        exclude group: 'com.android.support', module: 'appcompat'
+        exclude group: 'com.android.support', module: 'support-v4'
+        exclude module: 'recyclerview-v7'
+    }
+    androidTestImplementation "org.mockito:mockito-android:$MockitoVersion"
 }

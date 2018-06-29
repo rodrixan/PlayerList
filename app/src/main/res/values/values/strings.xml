@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Random Users</string>
+    <string name="default_error_message">Oops, there\'s been a problem with the request.\nPlease,
+        try again!</string>
+    <string name="navigation_drawer_open">Open Menu</string>
+    <string name="navigation_drawer_close">Close Menu</string>
+    <string name="search_view_hint">Search...</string>
+</resources>
