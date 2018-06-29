@@ -1,6 +1,7 @@
 package com.projects.rodrixan.playerlist.model;
 
 import java.io.Serializable;
+import java.util.Date;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
@@ -8,17 +9,15 @@ import com.google.gson.annotations.SerializedName;
 public class Player implements Serializable {
 
     @SerializedName("image")
-    @Expose
     private String image;
     @SerializedName("surname")
-    @Expose
     private String surname;
     @SerializedName("name")
-    @Expose
     private String name;
     @SerializedName("date")
-    @Expose
-    private String date;
+    private Date date;
+    @SerializedName("sport")
+    private String sport;
 
     /**
      * No args constructor for use in serialization
@@ -32,12 +31,13 @@ public class Player implements Serializable {
      * @param image
      * @param date
      */
-    public Player(String image, String surname, String name, String date) {
+    public Player(String image, String surname, String name, Date date, String sport) {
         super();
         this.image = image;
         this.surname = surname;
         this.name = name;
         this.date = date;
+        this.sport = sport;
     }
 
     public String getImage() {
@@ -79,17 +79,29 @@ public class Player implements Serializable {
         return this;
     }
 
-    public String getDate() {
+    public Date getDate() {
         return date;
     }
 
-    public void setDate(String date) {
+    public void setDate(Date date) {
         this.date = date;
     }
 
-    public Player withDate(String date) {
+    public Player withDate(Date date) {
         this.date = date;
         return this;
     }
 
+    public String getSport() {
+        return sport;
+    }
+
+    public void setSport(String sport) {
+        this.sport = sport;
+    }
+
+    public Player withSport(String sport) {
+        this.sport = sport;
+        return this;
+    }
 }

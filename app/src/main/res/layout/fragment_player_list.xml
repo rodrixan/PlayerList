@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:referencedswiperefreshlayout="http://schemas.android.com/apk/res-auto">
+    <com.projects.rodrixan.playerlist.common.view.recyclerview.ReferencedSwipeRefreshLayout
+        android:id="@+id/player_list_swipe_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <include
+                android:id="@+id/player_list_empty_view"
+                layout="@layout/empty_error_data_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:visibility="gone"
+                referencedswiperefreshlayout:layout_constraintLeft_toLeftOf="parent"
+                referencedswiperefreshlayout:layout_constraintRight_toRightOf="parent"
+                referencedswiperefreshlayout:layout_constraintTop_toTopOf="parent" />
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/players_recycler_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="visible"
+                referencedswiperefreshlayout:layout_constraintLeft_toLeftOf="parent"
+                referencedswiperefreshlayout:layout_constraintRight_toRightOf="parent"
+                referencedswiperefreshlayout:layout_constraintTop_toBottomOf="@+id/player_list_empty_view" />
+
+        </FrameLayout>
+    </com.projects.rodrixan.playerlist.common.view.recyclerview.ReferencedSwipeRefreshLayout>
+
+</android.support.constraint.ConstraintLayout>

@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="player_list_empty_results">Oops, there is no users, try again!</string>
+</resources>

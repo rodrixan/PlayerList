@@ -9,13 +9,10 @@ import com.google.gson.annotations.SerializedName;
 public class PlayerResponse implements Serializable {
 
     @SerializedName("players")
-    @Expose
     private List<Player> players = null;
     @SerializedName("type")
-    @Expose
     private String type;
     @SerializedName("title")
-    @Expose
     private String title;
 
     /**
