@@ -7,7 +7,7 @@ import org.androidannotations.annotations.EFragment;
 import java.io.Serializable;
 
 @EFragment
-public class BaseFragment extends Fragment implements Serializable {
+public abstract class BaseFragment extends Fragment implements Serializable {
 
     public String getFragmentId() {
         return this.getClass().getSimpleName();
