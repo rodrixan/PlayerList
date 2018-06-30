@@ -17,7 +17,7 @@ public class SplashActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         //nothing to load before launch first activity, so...
-//        RandomUsersListActivity_.intent(this).isFavouriteList(false).start();
+        PlayerListActivity_.intent(this).start();
         finish();
     }
 }

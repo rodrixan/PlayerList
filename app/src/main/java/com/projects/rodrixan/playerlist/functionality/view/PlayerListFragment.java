@@ -16,7 +16,6 @@ import com.projects.rodrixan.playerlist.functionality.presenter.PlayerListPresen
 import com.projects.rodrixan.playerlist.functionality.presenter.PlayerListPresenterImpl;
 import com.projects.rodrixan.playerlist.functionality.service.PlayerListManager;
 import com.projects.rodrixan.playerlist.functionality.service.PlayerListManagerImpl;
-import com.projects.rodrixan.playerlist.functionality.view.adapter.PlayerAdapter;
 import com.projects.rodrixan.playerlist.model.Player;
 
 import org.androidannotations.annotations.AfterInject;
@@ -26,8 +25,12 @@ import org.androidannotations.annotations.ViewById;
 
 import java.util.List;
 
+import eu.davidea.flexibleadapter.FlexibleAdapter;
+import eu.davidea.flexibleadapter.common.SmoothScrollLinearLayoutManager;
+import eu.davidea.flexibleadapter.items.IFlexible;
+
 @EFragment(R.layout.fragment_player_list)
-public class PlayerListFragment extends BaseFragment implements PlayerListView, 
+public class PlayerListFragment extends BaseFragment implements PlayerListView,
         SwipeRefreshLayout.OnRefreshListener {
 
     @ViewById(R.id.player_list_swipe_layout)
@@ -41,9 +44,8 @@ public class PlayerListFragment extends BaseFragment implements PlayerListView,
 
     @Bean(PlayerListPresenterImpl.class)
     protected PlayerListPresenter mPresenter;
-    
-    @Bean
-    protected PlayerAdapter mAdapter;
+
+    private FlexibleAdapter<IFlexible> mAdapter;
 
     @AfterInject
     protected void setupPresenter() {
@@ -67,7 +69,7 @@ public class PlayerListFragment extends BaseFragment implements PlayerListView,
     }
 
     @Override
-    public void onPlayersReceived(List<Player> players) {
+    public void onPlayersReceived(List<IFlexible> players) {
         hideLoader();
         loadData(players);
         showError(players == null || players.isEmpty(),
@@ -75,23 +77,30 @@ public class PlayerListFragment extends BaseFragment implements PlayerListView,
         setRefreshing(mSwipeRefreshLayout, false);
     }
 
-    private void loadData(List<Player> players) {
+    private void loadData(List<IFlexible> players) {
         loadAdapter(players);
-        setUpSwipeLayout();
         setUpRecyclerView();
+        setUpSwipeLayout();
+    }
+
+    private void loadAdapter(List<IFlexible> userList) {
+        if (mAdapter == null) {
+            mAdapter = new FlexibleAdapter<>(userList);
+            mAdapter.setDisplayHeadersAtStartUp(true).setStickyHeaders(true);
+        }
+        else {
+            mAdapter.updateDataSet(userList, false);
+        }
+
     }
 
     private void setUpRecyclerView() {
-        if (mRecyclerView != null && mAdapter != null) {
+        if (mRecyclerView != null) {
             if (mRecyclerView.getLayoutManager() == null) {
                 GridLayoutManager gridLayoutManager = new GridLayoutManager(getActivity(), 1,
                         GridLayoutManager.VERTICAL, false);
                 mRecyclerView.setLayoutManager(gridLayoutManager);
 
-            }
-            if (mRecyclerView.getItemDecorationCount() == 0) {
-                mRecyclerView.addItemDecoration(new DividerColorItemDecoration(getContext(),
-                        R.drawable.recyclerview_line_divider_grey));
             }
             if (mRecyclerView.getAdapter() == null) {
                 mRecyclerView.setAdapter(mAdapter);
@@ -99,12 +108,10 @@ public class PlayerListFragment extends BaseFragment implements PlayerListView,
             else {
                 mRecyclerView.getAdapter().notifyDataSetChanged();
             }
-        }
-    }
-
-    private void loadAdapter(List<Player> userList) {
-        if (mAdapter != null) {
-            mAdapter.setItems(userList);
+            if (mRecyclerView.getItemDecorationCount() == 0) {
+                mRecyclerView.addItemDecoration(new DividerColorItemDecoration(getContext(),
+                        R.drawable.recyclerview_line_divider_grey));
+            }
         }
     }
 

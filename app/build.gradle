@@ -8,12 +8,17 @@ def RetrofitGsonVersion = '2.4.0'
 def OkHttpVersion = '3.10.0'
 def CircleImageViewVersion = '2.2.0'
 def PicassoVersion = '2.71828'
+def FlexibleAdapterVersion = '5.0.5'
+def FlexibleAdapterUIVersion = '1.0.0-b5'
+def FlexibleAdapterLiveDataVersion = '1.0.0-b2'
+def FlexibleAdapterDataBindingVersion = '1.0.0-b3'
 
 def JUnitVersion = '4.12'
 def SupportTestVersion = '1.0.2'
 def EspressoVersion = '3.0.2'
 def SupportTest = '1.0.2'
 def MockitoVersion = '2.7.22'
+
 
 
 
@@ -93,6 +98,11 @@ dependencies {
 
     implementation "de.hdodenhof:circleimageview:$CircleImageViewVersion"
     implementation "com.squareup.picasso:picasso:$PicassoVersion"
+
+    implementation "eu.davidea:flexible-adapter:$FlexibleAdapterVersion"
+    implementation "eu.davidea:flexible-adapter-ui:$FlexibleAdapterUIVersion"
+    implementation "eu.davidea:flexible-adapter-livedata:$FlexibleAdapterLiveDataVersion"
+    implementation "eu.davidea:flexible-adapter-databinding:$FlexibleAdapterDataBindingVersion"
 
 
 

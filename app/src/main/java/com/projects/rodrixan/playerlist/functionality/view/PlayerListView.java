@@ -5,7 +5,9 @@ import com.projects.rodrixan.playerlist.model.Player;
 
 import java.util.List;
 
+import eu.davidea.flexibleadapter.items.IFlexible;
+
 public interface PlayerListView extends BaseView {
 
-    void onPlayersReceived(List<Player> players);
+    void onPlayersReceived(List<IFlexible> players);
 }

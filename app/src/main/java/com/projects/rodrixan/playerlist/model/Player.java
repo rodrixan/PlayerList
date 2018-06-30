@@ -16,8 +16,6 @@ public class Player implements Serializable {
     private String name;
     @SerializedName("date")
     private Date date;
-    @SerializedName("sport")
-    private String sport;
 
     /**
      * No args constructor for use in serialization
@@ -31,13 +29,12 @@ public class Player implements Serializable {
      * @param image
      * @param date
      */
-    public Player(String image, String surname, String name, Date date, String sport) {
+    public Player(String image, String surname, String name, Date date) {
         super();
         this.image = image;
         this.surname = surname;
         this.name = name;
         this.date = date;
-        this.sport = sport;
     }
 
     public String getImage() {
@@ -89,19 +86,6 @@ public class Player implements Serializable {
 
     public Player withDate(Date date) {
         this.date = date;
-        return this;
-    }
-
-    public String getSport() {
-        return sport;
-    }
-
-    public void setSport(String sport) {
-        this.sport = sport;
-    }
-
-    public Player withSport(String sport) {
-        this.sport = sport;
         return this;
     }
 }

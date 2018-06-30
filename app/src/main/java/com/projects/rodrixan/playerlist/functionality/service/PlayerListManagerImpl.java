@@ -46,7 +46,7 @@ public class PlayerListManagerImpl implements PlayerListManager {
                                     onResponseKO(new ErrorResponse());
                                 }
                                 else {
-                                    parseReceivedPlayers(presenter, response.body());
+                                    presenter.onUsersReceivedFromService(response.body());
                                 }
                             }
 
@@ -68,20 +68,6 @@ public class PlayerListManagerImpl implements PlayerListManager {
         }
     }
 
-    @Background
-    protected void parseReceivedPlayers(PlayerListCallback presenter, List<PlayerResponse>
-            playerResponseList) {
-        List<Player> allPlayers = new ArrayList<>();
-        for (PlayerResponse playerResponse : playerResponseList) {
-            List<Player> currentPlayers = new ArrayList<>(playerResponse.getPlayers());
-            String sport = playerResponse.getTitle();
-            for (Player player : currentPlayers) {
-                player.setSport(sport);
-                allPlayers.add(player);
-            }
-        }
-        presenter.onUsersReceivedFromService(allPlayers);
-    }
 
     @Override
     public void cancelPlayersCall() {

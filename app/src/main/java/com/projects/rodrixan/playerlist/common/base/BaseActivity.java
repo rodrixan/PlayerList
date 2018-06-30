@@ -10,12 +10,13 @@ import android.view.View;
 import com.projects.rodrixan.playerlist.R;
 
 import org.androidannotations.annotations.EActivity;
+import org.androidannotations.annotations.ViewById;
 
 @EActivity
 public abstract class BaseActivity extends AppCompatActivity {
     private static final String TAG = BaseActivity.class.getSimpleName();
 
-//    @ViewById(R.id.loading_view)
+    @ViewById(R.id.loading_view)
     protected ConstraintLayout mLoaderView;
 
 
