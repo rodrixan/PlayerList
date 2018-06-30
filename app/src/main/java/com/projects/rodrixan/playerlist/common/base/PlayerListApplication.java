@@ -1,6 +1,7 @@
 package com.projects.rodrixan.playerlist.common.base;
 
 import android.app.Application;
+import android.support.v7.app.AppCompatDelegate;
 import android.util.Log;
 
 import com.projects.rodrixan.playerlist.R;
@@ -19,6 +20,7 @@ public class PlayerListApplication extends Application {
         super.onCreate();
         Log.d(TAG, "On create Application");
         sInstance = this;
+        AppCompatDelegate.setCompatVectorFromResourcesEnabled(true);
     }
 
     public static PlayerListApplication getInstance() {

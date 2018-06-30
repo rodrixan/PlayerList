@@ -1,6 +1,7 @@
 package com.projects.rodrixan.playerlist.functionality.view.adapter;
 
 import android.content.Context;
+import android.support.v4.content.ContextCompat;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -118,9 +119,9 @@ public class ListPlayerViewHolder extends AbstractSectionableItem<ListPlayerView
             int sizeInPixels = MetricsUtils.convertDipToPixels(context, THUMBNAIL_PIC_SIZE_DP);
             Picasso.get()
                     .load(imageUrl)
-                    .placeholder(R.drawable.ic_image_placeholder)
+                    .placeholder(ContextCompat.getDrawable(context,R.drawable.ic_image_placeholder))
                     .resize(sizeInPixels, sizeInPixels)
-                    .error(R.drawable.ic_error_badge)
+                    .error(ContextCompat.getDrawable(context,R.drawable.ic_error_badge))
                     .into(holder.mPlayerImage);
 
         }
