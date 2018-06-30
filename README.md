@@ -22,4 +22,4 @@ Simple app to show a list of sport players grouped by sport
 
 ## Screenshots
 
-
+[player_list]: https://github.com/rodrixan/PlayerList/blob/master/player_list.png "player list"
