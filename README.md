@@ -20,8 +20,8 @@ Simple app to show a list of sport players grouped by sport
 
 * The app loads a list of users in Manager from the following url: https://api.myjson.com/bins/66851
 * Parse the data in Presenter and send it to View
-* View populates an adaptder with the data and shows the users in an list.
-  * The users are grouped by their sport
+* View populates an adapter with the received data and shows the users in a list.
+  * Users are grouped by their sport
   * The list shows the sport in both the headers and the players.
 
 ## Screenshots
